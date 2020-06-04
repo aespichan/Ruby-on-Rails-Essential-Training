@@ -13,8 +13,6 @@
     <tr class="header">
       <th>#</th>
       <th>Section</th>
-      <th>Content type</th>
-      <th>Content</th>
       <th>Visible</th>
       <th>Page</th>
       <th>Actions</th>
@@ -23,8 +21,6 @@
     <tr>
       <td><%= section.position %></td>
       <td><%= section.name %></td>
-      <td><%= section.content_type %></td>
-      <td><%= section.content %></td>
       <td class="center"><%= section.visible ? 'Yes' : 'No' %></td>
       <td class="center"><%= section.page ? section.page.name : '' %></td>
       <td class="actions">
