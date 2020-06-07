@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
   layout 'admin'
+
+  before_action :confim_logged_in
   before_action :set_subject_count, only: %i[new create edit update]
 
   def index

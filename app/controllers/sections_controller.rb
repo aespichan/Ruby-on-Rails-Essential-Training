@@ -1,5 +1,7 @@
 class SectionsController < ApplicationController
   layout 'admin'
+
+  before_action :confim_logged_in
   before_action :find_pages, only: %i[new create edit update]
   before_action :set_section_count, only: %i[new create edit update]
 
