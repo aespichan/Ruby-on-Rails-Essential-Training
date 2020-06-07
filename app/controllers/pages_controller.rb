@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  layout 'admin'
+  before_action :find_subjects, only: %i[new create edit update]
+  before_action :set_page_count, only: %i[new create edit update]
+
   def index
     @pages = Page.sorted
   end
@@ -52,5 +56,14 @@ class PagesController < ApplicationController
     params.require(:page).permit(
       :name, :position, :permalink, :visible, :subject_id
     )
+  end
+
+  def find_subjects
+    @subjects = Subject.sorted
+  end
+
+  def set_page_count
+    @page_count = Page.count
+    @page_count += 1 if params[:action].in?(%w[new create])
   end
 end

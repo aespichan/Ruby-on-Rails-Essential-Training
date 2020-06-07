@@ -1,4 +1,8 @@
 class SectionsController < ApplicationController
+  layout 'admin'
+  before_action :find_pages, only: %i[new create edit update]
+  before_action :set_section_count, only: %i[new create edit update]
+
   def index
     @sections = Section.sorted
   end
@@ -52,5 +56,14 @@ class SectionsController < ApplicationController
     params.require(:section).permit(
       :name, :position, :content_type, :content, :visible, :page_id
     )
+  end
+
+  def find_pages
+    @pages = Page.sorted
+  end
+
+  def set_section_count
+    @section_count = Section.count
+    @section_count += 1 if params[:action].in?(%w[new create])
   end
 end
